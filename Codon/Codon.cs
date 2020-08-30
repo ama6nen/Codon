@@ -56,8 +56,8 @@ namespace Codon
             { "GCG", Tuple.Create("Ala", "Alanine")  },
             { "TAT", Tuple.Create("Tyr", "Tyrosine")  }, //Also an excellent supplement (alone and especially when taken with stimulants) because it gets converted to L-DOPA -> dopamine,
             { "TAC", Tuple.Create("Tyr", "Tyrosine")  }, //which is great especially when you are able to produce more dopamine (like under stimulants) but may require tyrosine as a precursor, which majorly boosts the effects of said stimulant.
-            { "TAA", Tuple.Create("Stop", "Stop (Ochre)")  }, //Stop codon, Ochre in nomenclature comes from a stop codon mutation with TAA due to having ochre ccolor
-            { "TAG", Tuple.Create("Stop", "Stop (Amber)")  }, //Stop codon, Amber in nomenclature comes from the discoverers' friend's last name's meaning
+            { "TAA", Tuple.Create("Stop", "Stop[Ochre]")  }, //Stop codon, Ochre in nomenclature comes from a stop codon mutation with TAA due to having ochre ccolor
+            { "TAG", Tuple.Create("Stop", "Stop[Amber]")  }, //Stop codon, Amber in nomenclature comes from the discoverers' friend's last name's meaning
             { "CAT", Tuple.Create("His", "Histidine")  },
             { "CAC", Tuple.Create("His", "Histidine")  },
             { "CAA", Tuple.Create("Gln", "Glutamine")  }, //Sometimes used as supplement for intestinal growth/health, but its not of interest to me so I don't know more
@@ -66,13 +66,13 @@ namespace Codon
             { "AAC", Tuple.Create("Asn", "Asparagine")  },
             { "AAA", Tuple.Create("Lys", "Lysine")  },
             { "AAG", Tuple.Create("Lys", "Lysine")  },
-            { "GAT", Tuple.Create("Asp", "Aspartic acid")  }, //Related to asparagine but not equivalent
-            { "GAC", Tuple.Create("Asp", "Aspartic acid")  },
-            { "GAA", Tuple.Create("Glu", "Glutamic acid")  }, //Related to glutamine but not equivalent
-            { "GAG", Tuple.Create("Glu", "Glutamic acid")  },
+            { "GAT", Tuple.Create("Asp", "AsparticAcid")  }, //Related to asparagine but not equivalent
+            { "GAC", Tuple.Create("Asp", "AsparticAcid")  },
+            { "GAA", Tuple.Create("Glu", "GlutamicAcid")  }, //Related to glutamine but not equivalent
+            { "GAG", Tuple.Create("Glu", "GlutamicAcid")  },
             { "TGT", Tuple.Create("Cys", "Cysteine")  },
             { "TGC", Tuple.Create("Cys", "Cysteine")  },
-            { "TGA", Tuple.Create("Stop", "Stop (Opal)")  }, //Stop codon, Opal in nomenclature literally just tries to continue the pattern of colored minerals. Alternative name is Umber as well.
+            { "TGA", Tuple.Create("Stop", "Stop[Opal]")  }, //Stop codon, Opal in nomenclature literally just tries to continue the pattern of colored minerals. Alternative name is Umber as well.
             { "TGG", Tuple.Create("Trp", "Tryptophan")  }, //Also good supplement because it gets converted into 5-HTP -> Serotonin. Although 5-HTP crosses BBB easier and has bigger effects.
             { "CGT", Tuple.Create("Arg", "Arginine")  },
             { "CGC", Tuple.Create("Arg", "Arginine")  },

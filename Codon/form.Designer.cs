@@ -36,6 +36,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ReverseTranslate = new System.Windows.Forms.Button();
             this.UseUracil = new System.Windows.Forms.CheckBox();
+            this.ReadingFrame = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.ReadingFrame)).BeginInit();
             this.SuspendLayout();
             // 
             // OutputText
@@ -113,11 +115,29 @@
             this.UseUracil.Text = "RNA mode - Uracil output";
             this.UseUracil.UseVisualStyleBackColor = true;
             // 
+            // ReadingFrame
+            // 
+            this.ReadingFrame.Location = new System.Drawing.Point(15, 204);
+            this.ReadingFrame.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.ReadingFrame.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.ReadingFrame.Name = "ReadingFrame";
+            this.ReadingFrame.Size = new System.Drawing.Size(100, 25);
+            this.ReadingFrame.TabIndex = 8;
+            // 
             // form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 241);
+            this.Controls.Add(this.ReadingFrame);
             this.Controls.Add(this.UseUracil);
             this.Controls.Add(this.ReverseTranslate);
             this.Controls.Add(this.label2);
@@ -134,6 +154,7 @@
             this.ShowIcon = false;
             this.Text = "Codon Translator";
             this.Load += new System.EventHandler(this.form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ReadingFrame)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,6 +170,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button ReverseTranslate;
         private System.Windows.Forms.CheckBox UseUracil;
+        private System.Windows.Forms.NumericUpDown ReadingFrame;
     }
 }
 

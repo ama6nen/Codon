@@ -38,12 +38,13 @@ namespace Codon
                 OutputText.Text += (LetterCode.Checked ? Codon.Table[codon].Item1 : Codon.Table[codon].Item2) + " ";
             }
             OutputText.Text = OutputText.Text.TrimEnd(' '); //lazy way of replacing trailing space
+            OutputText.Text = OutputText.Text.Replace("Acid", " Acid"); //create the illusion of acid having a space
         }
 
         private void ReverseTranslate_Click(object sender, EventArgs e)
         {
-            //fix newlines and ","
-            var str = OutputText.Text.Replace(",", "").Replace(Environment.NewLine, "");
+            //fix newlines, ",", and acid names
+            var str = OutputText.Text.Replace(",", "").Replace(Environment.NewLine, "").Replace(" Acid", "Acid");
             var array = str.Split(' ').ToList(); //split by space instead this time
 
             InputText.Text = "";
