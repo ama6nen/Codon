@@ -2,10 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Codon
 {
+    public enum Property
+    {
+        Nonpolar,
+        Polar,
+        Basic,
+        Acidic,
+        Stop,
+        Start,
+        Invalid,
+    }
+
     public static class Codon
     {
 
@@ -89,6 +101,34 @@ namespace Codon
 
         };
 
+
+        public static Dictionary<string, Property> Bioproperties = new Dictionary<string, Property>()
+        {
+            { "Phe", Property.Nonpolar  },
+            { "Leu", Property.Nonpolar  },
+            { "Ile", Property.Nonpolar  },
+            { "Met", Property.Start  },
+            { "Val", Property.Nonpolar  },
+            { "Ser", Property.Polar  },
+            { "Pro", Property.Nonpolar  },
+            { "Thr", Property.Polar  },
+            { "Ala", Property.Nonpolar  },
+            { "Tyr", Property.Polar  },
+            { "Stp1", Property.Stop  },
+            { "Stp2", Property.Stop  },
+            { "Stp3", Property.Stop  },
+            { "His", Property.Basic  },
+            { "Gln", Property.Polar  },
+            { "Asn", Property.Polar  },
+            { "Lys", Property.Polar  },
+            { "Asp", Property.Acidic  },
+            { "Glu", Property.Acidic  },
+            { "Cys", Property.Polar  },
+            { "Trp", Property.Nonpolar  },
+            { "Arg", Property.Basic  },
+            { "Gly", Property.Nonpolar  },
+        };
+
     }
     public static class Extension
     {
@@ -100,7 +140,12 @@ namespace Codon
                     break;
                 yield return str.Substring(i, len);
             }
-                       
+
         }
+
+        //from stackoverflow
+        public static string RemoveIntegers(this string input)
+        => Regex.Replace(input, @"[\d-]", string.Empty);
+        
     }
 }
