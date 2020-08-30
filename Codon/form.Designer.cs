@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.OutputText = new System.Windows.Forms.TextBox();
             this.Translate = new System.Windows.Forms.Button();
             this.InputText = new System.Windows.Forms.TextBox();
@@ -37,6 +38,8 @@
             this.ReverseTranslate = new System.Windows.Forms.Button();
             this.UseUracil = new System.Windows.Forms.CheckBox();
             this.ReadingFrame = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.BaseTooltip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ReadingFrame)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,6 +78,7 @@
             this.LetterCode.Size = new System.Drawing.Size(135, 21);
             this.LetterCode.TabIndex = 3;
             this.LetterCode.Text = "Letter code output";
+            this.BaseTooltip.SetToolTip(this.LetterCode, "Example for TAT/UAU:\r\nOtput be Tyr when enabled instead of Tyrosine");
             this.LetterCode.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -85,6 +89,8 @@
             this.label1.Size = new System.Drawing.Size(125, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "DNA/RNA sequence";
+            this.BaseTooltip.SetToolTip(this.label1, "Example sequence AUGATCGGGGCCCCUUU\r\nU is always treated as T\r\nSpaces, newlines, a" +
+        "nd non-codon\'s will be ignored");
             // 
             // label2
             // 
@@ -94,6 +100,9 @@
             this.label2.Size = new System.Drawing.Size(176, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "Protein amino acid sequence";
+            this.BaseTooltip.SetToolTip(this.label2, "Amino acid sequences, separated by spaces.\r\nBoth Letter codes and normal sequence" +
+        "s will work\r\n\r\nExample of equivalent input:\r\nMethionine Isoleucine Glycine Alani" +
+        "ne Proline\r\nMet Ile Gly Ala Pro\r\n");
             // 
             // ReverseTranslate
             // 
@@ -113,30 +122,40 @@
             this.UseUracil.Size = new System.Drawing.Size(179, 21);
             this.UseUracil.TabIndex = 7;
             this.UseUracil.Text = "RNA mode - Uracil output";
+            this.BaseTooltip.SetToolTip(this.UseUracil, "Simply replaces T with U for output");
             this.UseUracil.UseVisualStyleBackColor = true;
             // 
             // ReadingFrame
             // 
-            this.ReadingFrame.Location = new System.Drawing.Point(15, 204);
-            this.ReadingFrame.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
+            this.ReadingFrame.Location = new System.Drawing.Point(15, 218);
             this.ReadingFrame.Minimum = new decimal(new int[] {
             2,
             0,
             0,
             -2147483648});
             this.ReadingFrame.Name = "ReadingFrame";
-            this.ReadingFrame.Size = new System.Drawing.Size(100, 25);
+            this.ReadingFrame.Size = new System.Drawing.Size(58, 25);
             this.ReadingFrame.TabIndex = 8;
+            this.BaseTooltip.SetToolTip(this.ReadingFrame, "Affects where the reading starts.\r\nUseful for demonstrating frame shift mutations" +
+        " for example.\r\n");
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 198);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(96, 17);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Reading Frame";
+            this.BaseTooltip.SetToolTip(this.label3, "Affects where the reading starts.\r\nUseful for demonstrating frame shift mutations" +
+        " for example.\r\n");
             // 
             // form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 241);
+            this.ClientSize = new System.Drawing.Size(615, 302);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.ReadingFrame);
             this.Controls.Add(this.UseUracil);
             this.Controls.Add(this.ReverseTranslate);
@@ -171,6 +190,8 @@
         private System.Windows.Forms.Button ReverseTranslate;
         private System.Windows.Forms.CheckBox UseUracil;
         private System.Windows.Forms.NumericUpDown ReadingFrame;
+        private System.Windows.Forms.ToolTip BaseTooltip;
+        private System.Windows.Forms.Label label3;
     }
 }
 
