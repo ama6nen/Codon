@@ -120,13 +120,15 @@
   <metadata name="BaseTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="BaseTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="BaseTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="BaseTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="Adjust.ToolTip" xml:space="preserve">
+    <value>Codon Memory:
+Wyou translate DNA into amino acids
+It will save the codons into a list, and if unmodified,
+it will get the proper codon for the amino acid that was
+used to convert it in the first place.
+
+Amino acid tags:
+Just adds numbers to the amino acid names, and uses
+a special table for getting the proper codon.</value>
+  </data>
 </root>

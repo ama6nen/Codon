@@ -20,25 +20,43 @@ namespace Codon
 
         private void form_Load(object sender, EventArgs e)
         {
-         
+
         }
+
+        public List<string> CodonMemory = new List<string>();
 
         private void Translate_Click(object sender, EventArgs e)
         {
+            bool memory = (int)AdjustMode.Codon_Memory == Adjust.SelectedIndex;
+
+            if (memory)
+                CodonMemory.Clear();
             //convert to upper and fix rna uracil, newlines, and spaces
             var str = InputText.Text.ToUpperInvariant().Replace('U', 'T').Replace(" ", "").Replace(Environment.NewLine, string.Empty);
+            if (ReadingFrame.Value > str.Length)
+                ReadingFrame.Value = 0;
+            str = str.Remove(0, (int)ReadingFrame.Value);
             var array = str.Split(3).ToList(); //custom split extension to group string into array where each element is 3.
 
             OutputText.Text = "";
-            foreach(var codon in array)
+            foreach (var codon in array)
             {
                 if (!Codon.Table.ContainsKey(codon)) //invalid
                     continue;
 
-                OutputText.Text += (LetterCode.Checked ? Codon.Table[codon].Item1 : Codon.Table[codon].Item2) + " ";
+                var item = (LetterCode.Checked ? Codon.Table[codon].Item1 : Codon.Table[codon].Item2);
+
+                if (memory)
+                    CodonMemory.Add(codon); //for reverse translation to be correct.
+                OutputText.Text += item + " ";
             }
             OutputText.Text = OutputText.Text.TrimEnd(' '); //lazy way of replacing trailing space
             OutputText.Text = OutputText.Text.Replace("Acid", " Acid"); //create the illusion of acid having a space
+
+            if (OutputText.Text == string.Empty)
+                OutputText.Text = "Input was invalid";
+
+            ReadingFrame.Value = 0;
         }
 
         private void ReverseTranslate_Click(object sender, EventArgs e)
@@ -48,12 +66,15 @@ namespace Codon
             var array = str.Split(' ').ToList(); //split by space instead this time
 
             InputText.Text = "";
+            int currindex = 0;
+            bool memory = (int)AdjustMode.Codon_Memory == Adjust.SelectedIndex && CodonMemory.Count == array.Count;
+            Debug.WriteLine(memory);
             foreach (var codon in array)
             {
                 string found = string.Empty;
-                foreach(var pair in Codon.Table.AsParallel()) //inefficient, but quick solution to get key by value
+                foreach (var pair in Codon.Table.AsParallel()) //inefficient, but quick solution to get key by value
                 {
-                    if(codon == pair.Value.Item1 || codon == pair.Value.Item2)
+                    if (codon == pair.Value.Item1 || codon == pair.Value.Item2)
                     {
                         found = pair.Key;
                         break;
@@ -63,11 +84,24 @@ namespace Codon
                 if (string.IsNullOrEmpty(found)) //not found or invalid
                     continue;
 
+                if (memory)
+                {
+                    if (currindex < CodonMemory.Count && Codon.Table.TryGetValue(CodonMemory[currindex], out var corrected))
+                    {
+                        if (corrected.Item1 == codon || corrected.Item2 == codon)
+                            found = CodonMemory[currindex]; //get the real value from memory
+                    }
+                    currindex++;
+                }
+
                 if (UseUracil.Checked)
                     found = found.Replace("T", "U");
                 InputText.Text += found + " ";
             }
             InputText.Text = InputText.Text.TrimEnd(' ');
+
+            if (InputText.Text == string.Empty)
+                InputText.Text = "Input was invalid";
         }
     }
 }

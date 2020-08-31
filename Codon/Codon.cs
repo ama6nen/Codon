@@ -18,6 +18,12 @@ namespace Codon
         Invalid,
     }
 
+    public enum AdjustMode : int
+    {
+        None,
+        Codon_Memory,
+        Amino_Tag
+    }
     public static class Codon
     {
 

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form));
             this.OutputText = new System.Windows.Forms.TextBox();
             this.Translate = new System.Windows.Forms.Button();
             this.InputText = new System.Windows.Forms.TextBox();
@@ -40,6 +41,8 @@
             this.ReadingFrame = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.BaseTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.Adjust = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ReadingFrame)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,11 +131,6 @@
             // ReadingFrame
             // 
             this.ReadingFrame.Location = new System.Drawing.Point(15, 218);
-            this.ReadingFrame.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
             this.ReadingFrame.Name = "ReadingFrame";
             this.ReadingFrame.Size = new System.Drawing.Size(58, 25);
             this.ReadingFrame.TabIndex = 8;
@@ -150,11 +148,37 @@
             this.BaseTooltip.SetToolTip(this.label3, "Affects where the reading starts.\r\nUseful for demonstrating frame shift mutations" +
         " for example.\r\n");
             // 
+            // Adjust
+            // 
+            this.Adjust.FormattingEnabled = true;
+            this.Adjust.Items.AddRange(new object[] {
+            "No adjustment",
+            "Codon memory",
+            "Amino acid tags"});
+            this.Adjust.Location = new System.Drawing.Point(13, 285);
+            this.Adjust.Name = "Adjust";
+            this.Adjust.Size = new System.Drawing.Size(121, 25);
+            this.Adjust.TabIndex = 11;
+            this.BaseTooltip.SetToolTip(this.Adjust, resources.GetString("Adjust.ToolTip"));
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 265);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(112, 17);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Adjustment Mode";
+            this.BaseTooltip.SetToolTip(this.label4, "Affects where the reading starts.\r\nUseful for demonstrating frame shift mutations" +
+        " for example.\r\n");
+            // 
             // form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 302);
+            this.ClientSize = new System.Drawing.Size(615, 322);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Adjust);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ReadingFrame);
             this.Controls.Add(this.UseUracil);
@@ -192,6 +216,8 @@
         private System.Windows.Forms.NumericUpDown ReadingFrame;
         private System.Windows.Forms.ToolTip BaseTooltip;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox Adjust;
+        private System.Windows.Forms.Label label4;
     }
 }
 
