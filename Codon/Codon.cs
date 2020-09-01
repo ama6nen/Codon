@@ -106,7 +106,7 @@ namespace Codon
             { "GGG", Tuple.Create("Gly", "Glycine")  },
 
         };
-
+         
         public static Dictionary<string, Tuple<string, string>> TagTable = new Dictionary<string, Tuple<string, string>>();
 
         public static Dictionary<string, Property> Bioproperties = new Dictionary<string, Property>()
