@@ -20,7 +20,22 @@ namespace Codon
 
         private void form_Load(object sender, EventArgs e)
         {
-
+            string last = "";
+            int counter = 1;
+            foreach(var pair in Codon.Table.AsParallel())
+            {
+                if(pair.Value.Item1 == last)
+                {
+                    Codon.TagTable.Add(pair.Key, new Tuple<string, string>(pair.Value.Item1 + counter.ToString(), pair.Value.Item2 + counter.ToString()));
+                    counter++;
+                }
+                else
+                {
+                    Codon.TagTable.Add(pair.Key, pair.Value);
+                    last = pair.Value.Item1;
+                    counter = 1;
+                }
+            }
         }
 
         public List<string> CodonMemory = new List<string>();
@@ -28,7 +43,7 @@ namespace Codon
         private void Translate_Click(object sender, EventArgs e)
         {
             bool memory = (int)AdjustMode.Codon_Memory == Adjust.SelectedIndex;
-
+            bool tag = (int)AdjustMode.Amino_Tag == Adjust.SelectedIndex;
             if (memory)
                 CodonMemory.Clear();
             //convert to upper and fix rna uracil, newlines, and spaces
@@ -44,7 +59,11 @@ namespace Codon
                 if (!Codon.Table.ContainsKey(codon)) //invalid
                     continue;
 
-                var item = (LetterCode.Checked ? Codon.Table[codon].Item1 : Codon.Table[codon].Item2);
+                string item;
+                if (tag)
+                    item = LetterCode.Checked ? Codon.TagTable[codon].Item1 : Codon.TagTable[codon].Item2;
+                else
+                    item = LetterCode.Checked ? Codon.Table[codon].Item1 : Codon.Table[codon].Item2;
 
                 if (memory)
                     CodonMemory.Add(codon); //for reverse translation to be correct.
@@ -68,18 +87,35 @@ namespace Codon
             InputText.Text = "";
             int currindex = 0;
             bool memory = (int)AdjustMode.Codon_Memory == Adjust.SelectedIndex && CodonMemory.Count == array.Count;
+            bool tag = (int)AdjustMode.Amino_Tag == Adjust.SelectedIndex;
             Debug.WriteLine(memory);
             foreach (var codon in array)
             {
                 string found = string.Empty;
-                foreach (var pair in Codon.Table.AsParallel()) //inefficient, but quick solution to get key by value
+
+                if (tag)
                 {
-                    if (codon == pair.Value.Item1 || codon == pair.Value.Item2)
+                    foreach (var pair in Codon.TagTable.AsParallel()) //inefficient, but quick solution to get key by value
                     {
-                        found = pair.Key;
-                        break;
+                        if (codon == pair.Value.Item1 || codon == pair.Value.Item2)
+                        {
+                            found = pair.Key;
+                            break;
+                        }
                     }
                 }
+                else
+                {
+                    foreach (var pair in Codon.Table.AsParallel()) //inefficient, but quick solution to get key by value
+                    {
+                        if (codon == pair.Value.Item1 || codon == pair.Value.Item2)
+                        {
+                            found = pair.Key;
+                            break;
+                        }
+                    }
+                }
+               
 
                 if (string.IsNullOrEmpty(found)) //not found or invalid
                     continue;

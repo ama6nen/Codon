@@ -60,6 +60,8 @@ namespace Codon
             { "TCC", Tuple.Create("Ser", "Serine")  },
             { "TCA", Tuple.Create("Ser", "Serine")  },
             { "TCG", Tuple.Create("Ser", "Serine")  },
+            { "AGT", Tuple.Create("Ser", "Serine")  },
+            { "AGC", Tuple.Create("Ser", "Serine")  },
             { "CCT", Tuple.Create("Pro", "Proline")  },
             { "CCC", Tuple.Create("Pro", "Proline")  },
             { "CCA", Tuple.Create("Pro", "Proline")  },
@@ -96,8 +98,6 @@ namespace Codon
             { "CGC", Tuple.Create("Arg", "Arginine")  },
             { "CGA", Tuple.Create("Arg", "Arginine")  },
             { "CGG", Tuple.Create("Arg", "Arginine")  },
-            { "AGT", Tuple.Create("Ser", "Serine")  },
-            { "AGC", Tuple.Create("Ser", "Serine")  },
             { "AGA", Tuple.Create("Arg", "Arginine")  },
             { "AGG", Tuple.Create("Arg", "Arginine")  },
             { "GGT", Tuple.Create("Gly", "Glycine")  }, //Also decent supplement for sleep (maybe because it can lower body temp, or because its the main inhibitory neurotransmitter)
@@ -107,6 +107,7 @@ namespace Codon
 
         };
 
+        public static Dictionary<string, Tuple<string, string>> TagTable = new Dictionary<string, Tuple<string, string>>();
 
         public static Dictionary<string, Property> Bioproperties = new Dictionary<string, Property>()
         {
