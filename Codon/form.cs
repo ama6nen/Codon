@@ -41,7 +41,10 @@ namespace Codon
                 {
                     if (!Codon.Table.ContainsKey(codon))
                         continue;
+   
                     InputText.Text += (UseUracil.Checked ? codon.Replace('T', 'U') : codon) + " ";
+                    if (UseStop.Checked && Codon.IsStopCodon(codon))
+                            break;
                 }
                 InputText.Text = InputText.Text.TrimEnd(' ');
             }
@@ -201,6 +204,16 @@ namespace Codon
 
             FormatInput(str);
             ShowIfInvalid(InputText);
+        }
+
+        private void GenRandom_Click(object sender, EventArgs e)
+        {
+            InputText.Text = "";
+
+            for(var i = 0; i < CodonGen.Value; i++)
+                InputText.Text += Codon.GetRandomCodon();
+
+            FormatInput(InputText.Text);
         }
     }
 }

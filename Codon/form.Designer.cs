@@ -49,9 +49,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.FrameshiftMutate = new System.Windows.Forms.Button();
             this.AutoFormat = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.CodonGen = new System.Windows.Forms.NumericUpDown();
+            this.GenRandom = new System.Windows.Forms.Button();
+            this.UseStop = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ReadingFrame)).BeginInit();
             this.Mutations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PointIndex)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CodonGen)).BeginInit();
             this.SuspendLayout();
             // 
             // OutputText
@@ -128,12 +133,12 @@
             // UseUracil
             // 
             this.UseUracil.AutoSize = true;
-            this.UseUracil.Location = new System.Drawing.Point(344, 165);
+            this.UseUracil.Location = new System.Drawing.Point(251, 165);
             this.UseUracil.Name = "UseUracil";
             this.UseUracil.Size = new System.Drawing.Size(97, 21);
             this.UseUracil.TabIndex = 7;
             this.UseUracil.Text = "Prefer uracil";
-            this.BaseTooltip.SetToolTip(this.UseUracil, "Simply replaces T with U for output");
+            this.BaseTooltip.SetToolTip(this.UseUracil, "Simply replaces T with U");
             this.UseUracil.UseVisualStyleBackColor = true;
             // 
             // ReadingFrame
@@ -238,7 +243,7 @@
             this.AutoFormat.AutoSize = true;
             this.AutoFormat.Checked = true;
             this.AutoFormat.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.AutoFormat.Location = new System.Drawing.Point(154, 165);
+            this.AutoFormat.Location = new System.Drawing.Point(148, 165);
             this.AutoFormat.Name = "AutoFormat";
             this.AutoFormat.Size = new System.Drawing.Size(97, 21);
             this.AutoFormat.TabIndex = 15;
@@ -247,13 +252,56 @@
         "rash characters");
             this.AutoFormat.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 248);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(111, 17);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Generate random";
+            this.BaseTooltip.SetToolTip(this.label6, "Generates random sample DNA sequence.");
+            // 
+            // CodonGen
+            // 
+            this.CodonGen.Location = new System.Drawing.Point(15, 268);
+            this.CodonGen.Name = "CodonGen";
+            this.CodonGen.Size = new System.Drawing.Size(58, 25);
+            this.CodonGen.TabIndex = 18;
+            this.BaseTooltip.SetToolTip(this.CodonGen, "Count of the sample in codon count");
+            // 
+            // GenRandom
+            // 
+            this.GenRandom.Location = new System.Drawing.Point(79, 268);
+            this.GenRandom.Name = "GenRandom";
+            this.GenRandom.Size = new System.Drawing.Size(53, 25);
+            this.GenRandom.TabIndex = 17;
+            this.GenRandom.Text = "Gen";
+            this.GenRandom.UseVisualStyleBackColor = true;
+            this.GenRandom.Click += new System.EventHandler(this.GenRandom_Click);
+            // 
+            // UseStop
+            // 
+            this.UseStop.AutoSize = true;
+            this.UseStop.Location = new System.Drawing.Point(354, 165);
+            this.UseStop.Name = "UseStop";
+            this.UseStop.Size = new System.Drawing.Size(99, 21);
+            this.UseStop.TabIndex = 20;
+            this.UseStop.Text = "Stop at stop";
+            this.BaseTooltip.SetToolTip(this.UseStop, "Stop translation at stop codons");
+            this.UseStop.UseVisualStyleBackColor = true;
+            // 
             // form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 368);
+            this.Controls.Add(this.UseStop);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.AutoFormat);
+            this.Controls.Add(this.CodonGen);
             this.Controls.Add(this.Mutations);
+            this.Controls.Add(this.GenRandom);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Adjust);
             this.Controls.Add(this.UseUracil);
@@ -276,6 +324,7 @@
             this.Mutations.ResumeLayout(false);
             this.Mutations.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PointIndex)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CodonGen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,6 +351,10 @@
         private System.Windows.Forms.NumericUpDown PointIndex;
         private System.Windows.Forms.Button FrameshiftMutate;
         private System.Windows.Forms.CheckBox AutoFormat;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown CodonGen;
+        private System.Windows.Forms.Button GenRandom;
+        private System.Windows.Forms.CheckBox UseStop;
     }
 }
 

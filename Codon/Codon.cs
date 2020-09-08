@@ -153,6 +153,12 @@ namespace Codon
                     return '?';
             }
         }
+
+        public static string GetRandomCodon()
+        => Table.Keys.ElementAt(random.Next(0, Table.Keys.Count - 1));
+
+        public static bool IsStopCodon(string input) => input == "TGA" || input == "TAA" || input == "TAG";
+
     }
     public static class Extension
     {
