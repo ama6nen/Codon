@@ -48,9 +48,6 @@ namespace Codon
                 CodonMemory.Clear();
             //convert to upper and fix rna uracil, newlines, and spaces
             var str = InputText.Text.ToUpperInvariant().Replace('U', 'T').Replace(" ", "").Replace(Environment.NewLine, string.Empty);
-            if (ReadingFrame.Value > str.Length)
-                ReadingFrame.Value = 0;
-            str = str.Remove(0, (int)ReadingFrame.Value);
             var array = str.Split(3).ToList(); //custom split extension to group string into array where each element is 3.
 
             OutputText.Text = "";
@@ -75,7 +72,6 @@ namespace Codon
             if (OutputText.Text == string.Empty)
                 OutputText.Text = "Input was invalid";
 
-            ReadingFrame.Value = 0;
         }
 
         private void ReverseTranslate_Click(object sender, EventArgs e)
@@ -144,10 +140,6 @@ namespace Codon
         {
             var str = InputText.Text.ToUpperInvariant().Replace('U', 'T').Replace(" ", "").Replace(Environment.NewLine, string.Empty);
           
-            if (ReadingFrame.Value > str.Length)
-                ReadingFrame.Value = 0;
-            str = str.Remove(0, (int)ReadingFrame.Value);
-
             var i = (int)PointIndex.Value;
             if (i >= str.Length)
                 return;
@@ -167,10 +159,30 @@ namespace Codon
             InputText.Text = "";
             foreach (var codon in array)
             {
-                if (!Codon.Table.ContainsKey(codon)) //invalid
+                if (!Codon.Table.ContainsKey(codon))
                     continue;
                 InputText.Text += codon + " ";
             }
+        }
+
+        private void FrameshiftMutate_Click(object sender, EventArgs e)
+        {
+            var str = InputText.Text.ToUpperInvariant().Replace('U', 'T').Replace(" ", "").Replace(Environment.NewLine, string.Empty);
+
+            if (ReadingFrame.Value > str.Length)
+                ReadingFrame.Value = 0;
+            str = str.Remove(0, (int)ReadingFrame.Value); //very simple
+
+            //now to just format everything
+            var array = str.Split(3).ToList();
+            InputText.Text = "";
+            foreach (var codon in array)
+            {
+                if (!Codon.Table.ContainsKey(codon))
+                    continue;
+                InputText.Text += codon + " ";
+            }
+            ReadingFrame.Value = 0;
         }
     }
 }

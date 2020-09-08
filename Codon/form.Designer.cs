@@ -137,23 +137,21 @@
             // 
             // ReadingFrame
             // 
-            this.ReadingFrame.Location = new System.Drawing.Point(9, 96);
+            this.ReadingFrame.Location = new System.Drawing.Point(6, 96);
             this.ReadingFrame.Name = "ReadingFrame";
             this.ReadingFrame.Size = new System.Drawing.Size(58, 25);
             this.ReadingFrame.TabIndex = 8;
-            this.BaseTooltip.SetToolTip(this.ReadingFrame, "Affects where the reading starts.\r\nUseful for demonstrating frame shift mutations" +
-        " for example.\r\n");
+            this.BaseTooltip.SetToolTip(this.ReadingFrame, "By how much to shift the frame by\r\n");
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 75);
+            this.label3.Location = new System.Drawing.Point(6, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 9;
             this.label3.Text = "Frameshift";
-            this.BaseTooltip.SetToolTip(this.label3, "Affects where the reading starts.\r\nFor demonstrating frame shift mutations for ex" +
-        "ample.\r\n");
+            this.BaseTooltip.SetToolTip(this.label3, "Shifts the reading frame by removing bases according to their count");
             // 
             // Adjust
             // 
@@ -226,12 +224,13 @@
             // 
             // FrameshiftMutate
             // 
-            this.FrameshiftMutate.Location = new System.Drawing.Point(73, 96);
+            this.FrameshiftMutate.Location = new System.Drawing.Point(70, 96);
             this.FrameshiftMutate.Name = "FrameshiftMutate";
             this.FrameshiftMutate.Size = new System.Drawing.Size(53, 25);
             this.FrameshiftMutate.TabIndex = 16;
             this.FrameshiftMutate.Text = "Apply";
             this.FrameshiftMutate.UseVisualStyleBackColor = true;
+            this.FrameshiftMutate.Click += new System.EventHandler(this.FrameshiftMutate_Click);
             // 
             // form
             // 
