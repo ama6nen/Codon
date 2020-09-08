@@ -18,13 +18,45 @@ namespace Codon
             InitializeComponent();
         }
 
+        public List<string> CodonMemory = new List<string>();
+
+        private async void ShowIfInvalid(TextBox box)
+        {
+            if (box.Text == string.Empty)
+            {
+                box.Text = "Input is invalid!";
+                await Task.Delay(2500);
+                box.Text = string.Empty;
+            }
+        }
+
+        private void FormatInput(string input)
+        {
+            if (AutoFormat.Checked)
+            {
+                input = input.Replace('U', 'T');
+                var array = input.Split(3).ToList();
+                InputText.Text = "";
+                foreach (var codon in array)
+                {
+                    if (!Codon.Table.ContainsKey(codon))
+                        continue;
+                    InputText.Text += (UseUracil.Checked ? codon.Replace('T', 'U') : codon) + " ";
+                }
+                InputText.Text = InputText.Text.TrimEnd(' ');
+            }
+            else
+                InputText.Text = (UseUracil.Checked ? input.Replace('T', 'U') : input);
+
+        }
+
         private void form_Load(object sender, EventArgs e)
         {
             string last = "";
             int counter = 1;
-            foreach(var pair in Codon.Table.AsParallel())
+            foreach (var pair in Codon.Table.AsParallel())
             {
-                if(pair.Value.Item1 == last)
+                if (pair.Value.Item1 == last)
                 {
                     Codon.TagTable.Add(pair.Key, new Tuple<string, string>(pair.Value.Item1 + counter.ToString(), pair.Value.Item2 + counter.ToString()));
                     counter++;
@@ -37,8 +69,6 @@ namespace Codon
                 }
             }
         }
-
-        public List<string> CodonMemory = new List<string>();
 
         private void Translate_Click(object sender, EventArgs e)
         {
@@ -69,9 +99,8 @@ namespace Codon
             OutputText.Text = OutputText.Text.TrimEnd(' '); //lazy way of replacing trailing space
             OutputText.Text = OutputText.Text.Replace("Acid", " Acid"); //create the illusion of acid having a space
 
-            if (OutputText.Text == string.Empty)
-                OutputText.Text = "Input was invalid";
-
+            FormatInput(str);
+            ShowIfInvalid(OutputText);
         }
 
         private void ReverseTranslate_Click(object sender, EventArgs e)
@@ -84,7 +113,7 @@ namespace Codon
             int currindex = 0;
             bool memory = (int)AdjustMode.Codon_Memory == Adjust.SelectedIndex && CodonMemory.Count == array.Count;
             bool tag = (int)AdjustMode.Amino_Tag == Adjust.SelectedIndex;
-            Debug.WriteLine(memory);
+
             foreach (var codon in array)
             {
                 string found = string.Empty;
@@ -111,7 +140,7 @@ namespace Codon
                         }
                     }
                 }
-               
+
 
                 if (string.IsNullOrEmpty(found)) //not found or invalid
                     continue;
@@ -126,26 +155,30 @@ namespace Codon
                     currindex++;
                 }
 
-                if (UseUracil.Checked)
-                    found = found.Replace("T", "U");
-                InputText.Text += found + " ";
+                if (AutoFormat.Checked)
+                {
+                    if (UseUracil.Checked)
+                        found = found.Replace("T", "U");
+                    InputText.Text += found + " ";
+                }
+                else InputText.Text += found;
             }
-            InputText.Text = InputText.Text.TrimEnd(' ');
 
-            if (InputText.Text == string.Empty)
-                InputText.Text = "Input was invalid";
+            if (AutoFormat.Checked)
+                InputText.Text = InputText.Text.TrimEnd(' ');
+            ShowIfInvalid(InputText);
         }
 
         private void ApplyPointMutation_Click(object sender, EventArgs e)
         {
             var str = InputText.Text.ToUpperInvariant().Replace('U', 'T').Replace(" ", "").Replace(Environment.NewLine, string.Empty);
-          
-            var i = (int)PointIndex.Value;
-            if (i >= str.Length)
-                return;
 
-            if (str[i] == '?') //Avoid infinite loop
+            var i = (int)PointIndex.Value;
+            if (i >= str.Length || str[i] == '?') //out of bounds and infinite loop
+            {
+                ShowIfInvalid(InputText);
                 return;
+            }
 
             //We dont really care if we have to call this function a few more times since wont affect perf
             var nuc = str[i];
@@ -154,15 +187,8 @@ namespace Codon
 
             str = str.Remove(i, 1).Insert(i, nuc.ToString()); //theres no convenient replace-char-at-index func
 
-            //while we are at it lets format everything plus remove invalid input
-            var array = str.Split(3).ToList(); 
-            InputText.Text = "";
-            foreach (var codon in array)
-            {
-                if (!Codon.Table.ContainsKey(codon))
-                    continue;
-                InputText.Text += codon + " ";
-            }
+            FormatInput(str);
+            ShowIfInvalid(InputText);
         }
 
         private void FrameshiftMutate_Click(object sender, EventArgs e)
@@ -173,16 +199,8 @@ namespace Codon
                 ReadingFrame.Value = 0;
             str = str.Remove(0, (int)ReadingFrame.Value); //very simple
 
-            //now to just format everything
-            var array = str.Split(3).ToList();
-            InputText.Text = "";
-            foreach (var codon in array)
-            {
-                if (!Codon.Table.ContainsKey(codon))
-                    continue;
-                InputText.Text += codon + " ";
-            }
-            ReadingFrame.Value = 0;
+            FormatInput(str);
+            ShowIfInvalid(InputText);
         }
     }
 }

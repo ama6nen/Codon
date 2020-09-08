@@ -48,6 +48,7 @@
             this.PointIndex = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.FrameshiftMutate = new System.Windows.Forms.Button();
+            this.AutoFormat = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ReadingFrame)).BeginInit();
             this.Mutations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PointIndex)).BeginInit();
@@ -129,9 +130,9 @@
             this.UseUracil.AutoSize = true;
             this.UseUracil.Location = new System.Drawing.Point(344, 165);
             this.UseUracil.Name = "UseUracil";
-            this.UseUracil.Size = new System.Drawing.Size(179, 21);
+            this.UseUracil.Size = new System.Drawing.Size(97, 21);
             this.UseUracil.TabIndex = 7;
-            this.UseUracil.Text = "RNA mode - Uracil output";
+            this.UseUracil.Text = "Prefer uracil";
             this.BaseTooltip.SetToolTip(this.UseUracil, "Simply replaces T with U for output");
             this.UseUracil.UseVisualStyleBackColor = true;
             // 
@@ -232,11 +233,26 @@
             this.FrameshiftMutate.UseVisualStyleBackColor = true;
             this.FrameshiftMutate.Click += new System.EventHandler(this.FrameshiftMutate_Click);
             // 
+            // AutoFormat
+            // 
+            this.AutoFormat.AutoSize = true;
+            this.AutoFormat.Checked = true;
+            this.AutoFormat.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.AutoFormat.Location = new System.Drawing.Point(154, 165);
+            this.AutoFormat.Name = "AutoFormat";
+            this.AutoFormat.Size = new System.Drawing.Size(97, 21);
+            this.AutoFormat.TabIndex = 15;
+            this.AutoFormat.Text = "Auto format";
+            this.BaseTooltip.SetToolTip(this.AutoFormat, "Whether or not to add spaces between codons,\r\nremove trailing bases, and remove t" +
+        "rash characters");
+            this.AutoFormat.UseVisualStyleBackColor = true;
+            // 
             // form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 368);
+            this.Controls.Add(this.AutoFormat);
             this.Controls.Add(this.Mutations);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Adjust);
@@ -285,6 +301,7 @@
         private System.Windows.Forms.GroupBox Mutations;
         private System.Windows.Forms.NumericUpDown PointIndex;
         private System.Windows.Forms.Button FrameshiftMutate;
+        private System.Windows.Forms.CheckBox AutoFormat;
     }
 }
 
