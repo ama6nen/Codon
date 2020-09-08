@@ -139,5 +139,38 @@ namespace Codon
             if (InputText.Text == string.Empty)
                 InputText.Text = "Input was invalid";
         }
+
+        private void ApplyPointMutation_Click(object sender, EventArgs e)
+        {
+            var str = InputText.Text.ToUpperInvariant().Replace('U', 'T').Replace(" ", "").Replace(Environment.NewLine, string.Empty);
+          
+            if (ReadingFrame.Value > str.Length)
+                ReadingFrame.Value = 0;
+            str = str.Remove(0, (int)ReadingFrame.Value);
+
+            var i = (int)PointIndex.Value;
+            if (i >= str.Length)
+                return;
+
+            if (str[i] == '?') //Avoid infinite loop
+                return;
+
+            //We dont really care if we have to call this function a few more times since wont affect perf
+            var nuc = str[i];
+            while (nuc == str[i])
+                nuc = Codon.GetRandomBase();
+
+            str = str.Remove(i, 1).Insert(i, nuc.ToString()); //theres no convenient replace-char-at-index func
+
+            //while we are at it lets format everything plus remove invalid input
+            var array = str.Split(3).ToList(); 
+            InputText.Text = "";
+            foreach (var codon in array)
+            {
+                if (!Codon.Table.ContainsKey(codon)) //invalid
+                    continue;
+                InputText.Text += codon + " ";
+            }
+        }
     }
 }

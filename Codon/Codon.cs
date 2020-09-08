@@ -136,6 +136,23 @@ namespace Codon
             { "Gly", Property.Nonpolar  },
         };
 
+        private static Random random = new Random();
+        public static char GetRandomBase()
+        {
+            switch(random.Next(0, 4))
+            {
+                case 0:
+                    return 'A';
+                case 1:
+                    return 'T';
+                case 2:
+                    return 'G';
+                case 3:
+                    return 'C';
+                default:
+                    return '?';
+            }
+        }
     }
     public static class Extension
     {

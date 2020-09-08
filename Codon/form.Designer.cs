@@ -43,7 +43,14 @@
             this.BaseTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.Adjust = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.ApplyPointMutation = new System.Windows.Forms.Button();
+            this.Mutations = new System.Windows.Forms.GroupBox();
+            this.PointIndex = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.FrameshiftMutate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ReadingFrame)).BeginInit();
+            this.Mutations.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PointIndex)).BeginInit();
             this.SuspendLayout();
             // 
             // OutputText
@@ -130,7 +137,7 @@
             // 
             // ReadingFrame
             // 
-            this.ReadingFrame.Location = new System.Drawing.Point(15, 218);
+            this.ReadingFrame.Location = new System.Drawing.Point(9, 96);
             this.ReadingFrame.Name = "ReadingFrame";
             this.ReadingFrame.Size = new System.Drawing.Size(58, 25);
             this.ReadingFrame.TabIndex = 8;
@@ -140,13 +147,13 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 198);
+            this.label3.Location = new System.Drawing.Point(6, 75);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 17);
+            this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Reading Frame";
-            this.BaseTooltip.SetToolTip(this.label3, "Affects where the reading starts.\r\nUseful for demonstrating frame shift mutations" +
-        " for example.\r\n");
+            this.label3.Text = "Frameshift";
+            this.BaseTooltip.SetToolTip(this.label3, "Affects where the reading starts.\r\nFor demonstrating frame shift mutations for ex" +
+        "ample.\r\n");
             // 
             // Adjust
             // 
@@ -155,7 +162,7 @@
             "No adjustment",
             "Codon memory",
             "Amino acid tags"});
-            this.Adjust.Location = new System.Drawing.Point(13, 285);
+            this.Adjust.Location = new System.Drawing.Point(13, 212);
             this.Adjust.Name = "Adjust";
             this.Adjust.Size = new System.Drawing.Size(121, 25);
             this.Adjust.TabIndex = 11;
@@ -164,7 +171,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 265);
+            this.label4.Location = new System.Drawing.Point(12, 192);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 17);
             this.label4.TabIndex = 12;
@@ -172,15 +179,68 @@
             this.BaseTooltip.SetToolTip(this.label4, "Affects where the reading starts.\r\nUseful for demonstrating frame shift mutations" +
         " for example.\r\n");
             // 
+            // ApplyPointMutation
+            // 
+            this.ApplyPointMutation.Location = new System.Drawing.Point(70, 41);
+            this.ApplyPointMutation.Name = "ApplyPointMutation";
+            this.ApplyPointMutation.Size = new System.Drawing.Size(53, 25);
+            this.ApplyPointMutation.TabIndex = 13;
+            this.ApplyPointMutation.Text = "Apply";
+            this.ApplyPointMutation.UseVisualStyleBackColor = true;
+            this.ApplyPointMutation.Click += new System.EventHandler(this.ApplyPointMutation_Click);
+            // 
+            // Mutations
+            // 
+            this.Mutations.Controls.Add(this.FrameshiftMutate);
+            this.Mutations.Controls.Add(this.label5);
+            this.Mutations.Controls.Add(this.PointIndex);
+            this.Mutations.Controls.Add(this.ApplyPointMutation);
+            this.Mutations.Controls.Add(this.ReadingFrame);
+            this.Mutations.Controls.Add(this.label3);
+            this.Mutations.Location = new System.Drawing.Point(181, 192);
+            this.Mutations.Name = "Mutations";
+            this.Mutations.Size = new System.Drawing.Size(307, 164);
+            this.Mutations.TabIndex = 14;
+            this.Mutations.TabStop = false;
+            this.Mutations.Text = "Mutation simulation";
+            // 
+            // PointIndex
+            // 
+            this.PointIndex.Location = new System.Drawing.Point(6, 41);
+            this.PointIndex.Name = "PointIndex";
+            this.PointIndex.Size = new System.Drawing.Size(58, 25);
+            this.PointIndex.TabIndex = 15;
+            this.BaseTooltip.SetToolTip(this.PointIndex, "Index where the mutation will happen");
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 17);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Point";
+            this.BaseTooltip.SetToolTip(this.label5, "Changes a letter in the DNA/RNA sequence\r\nat the specified index, to any other on" +
+        "e.\r\nIn reality A usually mutates to T and\r\nC usually to G, but adding modes for " +
+        "each would\r\nbe too much work.");
+            // 
+            // FrameshiftMutate
+            // 
+            this.FrameshiftMutate.Location = new System.Drawing.Point(73, 96);
+            this.FrameshiftMutate.Name = "FrameshiftMutate";
+            this.FrameshiftMutate.Size = new System.Drawing.Size(53, 25);
+            this.FrameshiftMutate.TabIndex = 16;
+            this.FrameshiftMutate.Text = "Apply";
+            this.FrameshiftMutate.UseVisualStyleBackColor = true;
+            // 
             // form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 322);
+            this.ClientSize = new System.Drawing.Size(615, 368);
+            this.Controls.Add(this.Mutations);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Adjust);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.ReadingFrame);
             this.Controls.Add(this.UseUracil);
             this.Controls.Add(this.ReverseTranslate);
             this.Controls.Add(this.label2);
@@ -198,6 +258,9 @@
             this.Text = "Codon Translator";
             this.Load += new System.EventHandler(this.form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ReadingFrame)).EndInit();
+            this.Mutations.ResumeLayout(false);
+            this.Mutations.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PointIndex)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,6 +281,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox Adjust;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button ApplyPointMutation;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox Mutations;
+        private System.Windows.Forms.NumericUpDown PointIndex;
+        private System.Windows.Forms.Button FrameshiftMutate;
     }
 }
 
