@@ -89,7 +89,7 @@
             // LetterCode
             // 
             this.LetterCode.AutoSize = true;
-            this.LetterCode.Location = new System.Drawing.Point(13, 165);
+            this.LetterCode.Location = new System.Drawing.Point(162, 165);
             this.LetterCode.Name = "LetterCode";
             this.LetterCode.Size = new System.Drawing.Size(135, 21);
             this.LetterCode.TabIndex = 3;
@@ -133,7 +133,7 @@
             // UseUracil
             // 
             this.UseUracil.AutoSize = true;
-            this.UseUracil.Location = new System.Drawing.Point(251, 165);
+            this.UseUracil.Location = new System.Drawing.Point(162, 242);
             this.UseUracil.Name = "UseUracil";
             this.UseUracil.Size = new System.Drawing.Size(97, 21);
             this.UseUracil.TabIndex = 7;
@@ -143,7 +143,7 @@
             // 
             // ReadingFrame
             // 
-            this.ReadingFrame.Location = new System.Drawing.Point(6, 96);
+            this.ReadingFrame.Location = new System.Drawing.Point(146, 41);
             this.ReadingFrame.Name = "ReadingFrame";
             this.ReadingFrame.Size = new System.Drawing.Size(58, 25);
             this.ReadingFrame.TabIndex = 8;
@@ -152,7 +152,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 76);
+            this.label3.Location = new System.Drawing.Point(146, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 9;
@@ -166,7 +166,7 @@
             "No adjustment",
             "Codon memory",
             "Amino acid tags"});
-            this.Adjust.Location = new System.Drawing.Point(13, 212);
+            this.Adjust.Location = new System.Drawing.Point(13, 185);
             this.Adjust.Name = "Adjust";
             this.Adjust.Size = new System.Drawing.Size(121, 25);
             this.Adjust.TabIndex = 11;
@@ -175,7 +175,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 192);
+            this.label4.Location = new System.Drawing.Point(12, 165);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 17);
             this.label4.TabIndex = 12;
@@ -185,7 +185,7 @@
             // 
             // ApplyPointMutation
             // 
-            this.ApplyPointMutation.Location = new System.Drawing.Point(70, 41);
+            this.ApplyPointMutation.Location = new System.Drawing.Point(75, 41);
             this.ApplyPointMutation.Name = "ApplyPointMutation";
             this.ApplyPointMutation.Size = new System.Drawing.Size(53, 25);
             this.ApplyPointMutation.TabIndex = 13;
@@ -201,16 +201,16 @@
             this.Mutations.Controls.Add(this.ApplyPointMutation);
             this.Mutations.Controls.Add(this.ReadingFrame);
             this.Mutations.Controls.Add(this.label3);
-            this.Mutations.Location = new System.Drawing.Point(181, 192);
+            this.Mutations.Location = new System.Drawing.Point(330, 185);
             this.Mutations.Name = "Mutations";
-            this.Mutations.Size = new System.Drawing.Size(307, 164);
+            this.Mutations.Size = new System.Drawing.Size(272, 78);
             this.Mutations.TabIndex = 14;
             this.Mutations.TabStop = false;
             this.Mutations.Text = "Mutation simulation";
             // 
             // PointIndex
             // 
-            this.PointIndex.Location = new System.Drawing.Point(6, 41);
+            this.PointIndex.Location = new System.Drawing.Point(11, 41);
             this.PointIndex.Name = "PointIndex";
             this.PointIndex.Size = new System.Drawing.Size(58, 25);
             this.PointIndex.TabIndex = 15;
@@ -219,7 +219,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 21);
+            this.label5.Location = new System.Drawing.Point(11, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 17);
             this.label5.TabIndex = 15;
@@ -230,7 +230,7 @@
             // 
             // FrameshiftMutate
             // 
-            this.FrameshiftMutate.Location = new System.Drawing.Point(70, 96);
+            this.FrameshiftMutate.Location = new System.Drawing.Point(210, 41);
             this.FrameshiftMutate.Name = "FrameshiftMutate";
             this.FrameshiftMutate.Size = new System.Drawing.Size(53, 25);
             this.FrameshiftMutate.TabIndex = 16;
@@ -243,7 +243,7 @@
             this.AutoFormat.AutoSize = true;
             this.AutoFormat.Checked = true;
             this.AutoFormat.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.AutoFormat.Location = new System.Drawing.Point(148, 165);
+            this.AutoFormat.Location = new System.Drawing.Point(162, 192);
             this.AutoFormat.Name = "AutoFormat";
             this.AutoFormat.Size = new System.Drawing.Size(97, 21);
             this.AutoFormat.TabIndex = 15;
@@ -255,7 +255,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 248);
+            this.label6.Location = new System.Drawing.Point(13, 221);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(111, 17);
             this.label6.TabIndex = 19;
@@ -264,7 +264,7 @@
             // 
             // CodonGen
             // 
-            this.CodonGen.Location = new System.Drawing.Point(15, 268);
+            this.CodonGen.Location = new System.Drawing.Point(15, 241);
             this.CodonGen.Name = "CodonGen";
             this.CodonGen.Size = new System.Drawing.Size(58, 25);
             this.CodonGen.TabIndex = 18;
@@ -272,7 +272,7 @@
             // 
             // GenRandom
             // 
-            this.GenRandom.Location = new System.Drawing.Point(79, 268);
+            this.GenRandom.Location = new System.Drawing.Point(79, 241);
             this.GenRandom.Name = "GenRandom";
             this.GenRandom.Size = new System.Drawing.Size(53, 25);
             this.GenRandom.TabIndex = 17;
@@ -283,7 +283,7 @@
             // UseStop
             // 
             this.UseStop.AutoSize = true;
-            this.UseStop.Location = new System.Drawing.Point(354, 165);
+            this.UseStop.Location = new System.Drawing.Point(162, 217);
             this.UseStop.Name = "UseStop";
             this.UseStop.Size = new System.Drawing.Size(99, 21);
             this.UseStop.TabIndex = 20;
@@ -295,7 +295,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 368);
+            this.ClientSize = new System.Drawing.Size(615, 273);
             this.Controls.Add(this.UseStop);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.AutoFormat);

@@ -194,6 +194,8 @@ namespace Codon
             ShowIfInvalid(InputText);
         }
 
+        //couldn't bother to actually make it have a proper frame like the start codon and from there shift it
+        //or make the string loop around or so forth, so this is pretty much same as a deletion mutation
         private void FrameshiftMutate_Click(object sender, EventArgs e)
         {
             var str = InputText.Text.ToUpperInvariant().Replace('U', 'T').Replace(" ", "").Replace(Environment.NewLine, string.Empty);
